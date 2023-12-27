@@ -14,13 +14,32 @@
 	<name>accounts</name>
 	<description>Bank Account Management System</description>
 	<properties>
-		<java.version>20</java.version>
-		<joinfaces.version>5.0.3</joinfaces.version>
+		<joinfaces.version>5.2.0</joinfaces.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.joinfaces</groupId>
+				<artifactId>joinfaces-bom</artifactId>
+				<version>${joinfaces.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.joinfaces</groupId>
+			<artifactId>faces-spring-boot-starter</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.joinfaces</groupId>
 			<artifactId>primefaces-spring-boot-starter</artifactId>
+			<version>${joinfaces.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -46,25 +65,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.joinfaces</groupId>
-				<artifactId>joinfaces-dependencies</artifactId>
-				<version>${joinfaces.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
 				<configuration>
 					<excludes>
 						<exclude>
