@@ -8,16 +8,37 @@ xmlns:p="http://primefaces.org/ui"    >
 </h:head>
 <h:body>
     <div class="card">
-        <div class="flex justify-content-center flex-wrap card-container yellow-container">
-            <h3>Management Account System</h3>
-
             <div class="card">
                 <p:dataTable value="#{indexController.accounts}" var="account">
-                    <div>Values in the table: </div>
-                    <h:outputText value="#{account.name}"/>
+                    <f:facet name="header">
+                        <div class="flex justify-content-center flex-wrap card-container yellow-container">
+                            <div class="flex align-items-center justify-content-center
+                                        w-20rem h-4rem bg-yellow-500 font-bold text-gray-900
+                                        border-round m-2">
+                                <h3>Management Account System</h3>
+                            </div>
+                        </div>
+                    </f:facet>
+
+                    <p:column headerText="Id">
+                        <h:outputText value="#{account.idAccount}"/>
+                    </p:column>
+
+                    <p:column headerText="Name">
+                        <h:outputText value="#{account.name}"/>
+                    </p:column>
+
+                    <p:column headerText="Type Account">
+                        <h:outputText value="#{account.typeAccount}"/>
+                    </p:column>
+
+                    <p:column headerText="Balance">
+                        <h:outputText value="#{account.balance}">
+                            <f:convertNumber type="currency" currencySymbol="$"/>
+                        </h:outputText>
+                    </p:column>
                 </p:dataTable>
             </div>
-        </div>
     </div>
 </h:body>
 </h:html>
