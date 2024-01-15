@@ -8,8 +8,16 @@ xmlns:p="http://primefaces.org/ui"    >
 </h:head>
 <h:body>
     <div class="card">
+        <h:form id="form-accounts">
+            <p:growl id="messages" showDetail="true"/>
             <div class="card">
-                <p:dataTable value="#{indexController.accounts}" var="account">
+                <p:menubar>
+                    <p:menuitem value="Home" icon="pi pi-fw pi-user" update="form-accounts:accounts-table" actionList="#{indexController.loadData}"/>
+                </p:menubar>
+            </div>
+            <div class="card">
+                <p:dataTable value="#{indexController.accounts}" var="account"
+                id="accounts-table" widgetVar="accountsTable">
                     <f:facet name="header">
                         <div class="flex justify-content-center flex-wrap card-container yellow-container">
                             <div class="flex align-items-center justify-content-center
@@ -39,6 +47,7 @@ xmlns:p="http://primefaces.org/ui"    >
                     </p:column>
                 </p:dataTable>
             </div>
+        </h:form>
     </div>
 </h:body>
 </h:html>
