@@ -89,6 +89,11 @@
                     <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('windowModalAccount').hide()" class="ui-button-secondary" type="button"/>
                 </f:facet>
             </p:dialog>
+
+            <p:confirmDialog widgetVar="deleteAccountWindow" showEffect="fade" width="300" message="Delete Account?" header="Confirm" severity="warn">
+                <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{indexController.deleteAccount}" process="@this" oncomplete="PF('deleteAccountWindow').hide()"/>
+                <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times" onclick="PF('deleteAccountWindow').hide()"/>
+            </p:confirmDialog>
         </h:form>
     </div>
 </h:body>
