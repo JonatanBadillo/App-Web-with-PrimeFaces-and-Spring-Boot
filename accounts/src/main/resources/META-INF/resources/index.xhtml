@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<h:html xmlns:f="http://xmlns.jcp.org/jsf/core"
-xmlns:h="http://xmlns.jcp.org/jsf/html"
-xmlns:p="http://primefaces.org/ui"    >
+<html xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Management Account System</title>
     <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
@@ -12,12 +12,13 @@ xmlns:p="http://primefaces.org/ui"    >
             <p:growl id="messages" showDetail="true"/>
             <div class="card">
                 <p:menubar>
-                    <p:menuitem value="Home" icon="pi pi-fw pi-user" update="form-accounts:accounts-table" actionList="#{indexController.loadData}"/>
+                    <p:menuitem value="Home" icon="pi pi-fw pi-user" update="form-accounts:accounts-table" actionListener="#{indexController.loadData}"/>
+                    <p:menuitem value="New Account" icon="pi pi-fw pi-plus" actionListener="#{indexController.addAccount}" update=":form-modal:account-window" oncomplete="PF('windowModalAccount').show()"/>
                 </p:menubar>
             </div>
             <div class="card">
                 <p:dataTable value="#{indexController.accounts}" var="account"
-                id="accounts-table" widgetVar="accountsTable">
+                             id="accounts-table" widgetVar="accountsTable">
                     <f:facet name="header">
                         <div class="flex justify-content-center flex-wrap card-container yellow-container">
                             <div class="flex align-items-center justify-content-center
@@ -48,6 +49,31 @@ xmlns:p="http://primefaces.org/ui"    >
                 </p:dataTable>
             </div>
         </h:form>
+
+        <h:form id="form-modal">
+            <p:dialog header="Account Details" showEffect="fade" modal="true" widgetVar="windowModalAccount" responsive="true">
+                <p:outputPanel id="account-window" class="ui-fluid">
+                    <div class="field">
+                        <p:outputLabel for="name">Name</p:outputLabel>
+                        <p:inputText id="name" value="#{indexController.selectedAccount.name}" required="true"/>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="typeAccount">Account Type</p:outputLabel>
+                        <p:selectOneMenu id="typeAccount" value="#{indexController.selectedAccount.typeAccount}">
+                            <f:selectItem itemLabel="Select" itemValue=""/>
+                            <f:selectItem itemLabel="Saving" itemValue="Saving"/>
+                            <f:selectItem itemLabel="Credit" itemValue="Credit"/>
+                            <f:selectItem itemLabel="Investment" itemValue="Investment"/>
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="balance">Balance</p:outputLabel>
+                        <p:inputNumber id="balance" value="#{indexController.selectedAccount.balance}"/>
+                    </div>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
     </div>
 </h:body>
-</h:html>
+</html>
