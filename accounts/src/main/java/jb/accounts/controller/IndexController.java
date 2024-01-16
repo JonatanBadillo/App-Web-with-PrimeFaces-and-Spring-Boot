@@ -46,6 +46,9 @@ public class IndexController {
             this.accountService.saveAccount(this.selectedAccount);
             this.accounts.add(this.selectedAccount);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Added Account"));
+        }else{
+            this.accountService.saveAccount(this.selectedAccount);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Updated Account"));
         }
         // Hiding the window
         PrimeFaces.current().executeScript("PF('windowModalAccount').hide()");
