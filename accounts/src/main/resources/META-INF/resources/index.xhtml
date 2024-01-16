@@ -53,10 +53,8 @@
                             <f:setPropertyActionListener target="#{indexController.selectedAccount}" value="#{account}"/>
                             <p:resetInput target=":form-modal:account-window"/>
                         </p:commandButton>
-                        <p:commandButton value="Delete" class="ui-button-danger" icon="pi pi-trash"  oncomplete="PF('deleteAccountWindow').show()" process="@this"
-                                         class="ui-button-primary" style="margin-right: .5rem">
+                        <p:commandButton value="Delete" class="ui-button-danger" icon="pi pi-trash"  oncomplete="PF('deleteAccountWindow').show()" process="@this">
                             <f:setPropertyActionListener target="#{indexController.selectedAccount}" value="#{account}"/>
-                            <p:resetInput target=":form-modal:account-window"/>
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
