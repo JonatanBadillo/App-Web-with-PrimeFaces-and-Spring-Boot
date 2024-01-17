@@ -33,3 +33,8 @@
 
 <img src="./imgs/1.png" >
 
+### Adding new Account
+
+<img src="./imgs/2.png" >
+
+<img src="./imgs/3.png" >
