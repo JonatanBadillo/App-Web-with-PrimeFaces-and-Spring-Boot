@@ -54,5 +54,20 @@ public class IndexController {
         PrimeFaces.current().executeScript("PF('windowModalAccount').hide()");
         // Update the table
         PrimeFaces.current().ajax().update("form-accounts:messages","form-accounts:accounts-table");
+        // Reset
+        this.selectedAccount = null;
     }
+
+    public void deleteAccount(){
+        logger.info("Account to delete: " + this.selectedAccount);
+        this.accountService.deleteAccount(this.selectedAccount);
+        //Delete register of list accounts
+        this.accounts.remove(this.selectedAccount);
+        // Reset of selected object
+        this.selectedAccount = null;
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Deleted Account"));
+        PrimeFaces.current().ajax().update("form-accounts:messages","form-accounts:accounts-table");
+
+    }
+
 }
