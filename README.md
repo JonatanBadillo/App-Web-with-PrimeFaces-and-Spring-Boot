@@ -28,3 +28,8 @@
 
 8. **Connecting to MySQL Database**
    - Establish a connection to the MySQL database for efficient data storage.
+
+## Images
+
+<img src="./imgs/1.png" >
+
